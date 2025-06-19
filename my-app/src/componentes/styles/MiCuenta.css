@@ -1,0 +1,167 @@
+.contenedor-collapsible {
+  max-height: 2000px; 
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.contenedor-collapsible.cerrado {
+  max-height: 0;
+  overflow: hidden;
+}
+.micuenta-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.micuenta-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 10px;
+}
+
+.form-micuenta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-form label {
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.campo-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.8px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.campo-form input:focus {
+  border-color: #2c3e50;
+}
+
+.btn-guardar {
+  margin-top: 10px;
+  background-color: #2c3e50;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+}
+
+.btn-guardar:hover {
+  background-color: rgb(32, 93, 133);
+}
+
+.mensaje {
+  margin-top: 18px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: green;
+  text-align: center;
+}
+
+.header-micuenta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn-toggle {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-toggle:hover {
+  background-color: rgb(32, 93, 133);
+}
+.campo-form input {
+  width: 400px;
+  padding: 12px 16px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fefefe;
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.05);
+}
+.campo-form input:focus {
+  border-color: #4e79a7;
+  box-shadow: 0 0 6px #4e79a7;
+  background-color: #fff;
+}
+.input-text {
+  border-color: #6c757d;
+}
+
+.input-text:focus {
+  border-color: #3b5998;
+  box-shadow: 0 0 6px #3b5998;
+
+}
+
+.input-email {
+  border-color: #28a745;
+}
+
+.input-email:focus {
+  border-color: #1e7e34;
+  box-shadow: 0 0 6px #1e7e34;
+}
+
+.input-password,
+.input-passwordConfirm {
+  border-color: #dc3545;
+}
+
+.input-password:focus,
+.input-passwordConfirm:focus {
+  border-color: #a71d2a;
+  box-shadow: 0 0 6px #a71d2a;
+}
+@media (max-width: 600px) {
+  .micuenta-container {
+    padding: 20px;
+    margin: 20px 10px;
+  }
+}
