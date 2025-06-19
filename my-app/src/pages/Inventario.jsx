@@ -79,7 +79,7 @@ const Inventario = () => {
             </select>
           </div>
 
-          <button className="boton-agregar" onClick={() => alert("Agregar nuevo producto")}>Agregar Producto</button>
+          <button className="boton-agregar" >Agregar Producto</button>
         </div>
 
         {productosFiltrados.length === 0 ? (
