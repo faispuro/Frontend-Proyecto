@@ -1,5 +1,5 @@
 .contenedor-collapsible {
-  max-height: 2000px; 
+  max-height: 2000px;
   overflow: hidden;
   transition: max-height 0.5s ease;
 }
@@ -15,13 +15,13 @@
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   box-sizing: border-box;
 }
 
 .micuenta-container h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 2rem;
   color: #2c3e50;
@@ -44,7 +44,7 @@
 
 .campo-form label {
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: #34495e;
 }
@@ -55,7 +55,7 @@
   border: 1.8px solid #ccc;
   border-radius: 10px;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   outline: none;
   transition: border-color 0.3s ease;
 }
@@ -74,7 +74,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   user-select: none;
 }
 
@@ -85,7 +85,7 @@
 .mensaje {
   margin-top: 18px;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: green;
   text-align: center;
 }
@@ -104,7 +104,7 @@
   padding: 8px 16px;
   border-radius: 10px;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   transition: background-color 0.3s ease;
   user-select: none;
@@ -119,7 +119,7 @@
   border: 2px solid #ccc;
   border-radius: 12px;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   background-color: #fefefe;
@@ -137,7 +137,6 @@
 .input-text:focus {
   border-color: #3b5998;
   box-shadow: 0 0 6px #3b5998;
-
 }
 
 .input-email {
@@ -164,4 +163,73 @@
     padding: 20px;
     margin: 20px 10px;
   }
+}
+
+/* Estilos para la página simplificada de Mi Cuenta */
+.datos-usuario {
+  margin: 2rem 0;
+}
+
+.campo-info {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #2c3e50;
+}
+
+.campo-info label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.valor-campo {
+  font-size: 1.1rem;
+  color: #34495e;
+  margin: 0;
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
+
+.acciones-cuenta {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.btn-logout {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.btn-logout:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.btn-logout:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.mi-cuenta-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.1rem;
+  color: #7f8c8d;
 }

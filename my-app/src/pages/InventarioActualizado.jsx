@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../componentes/styles/InventarioNuevo.css";
 import MenuInteractivo from "../componentes/MenuInteractivo";
-import FormularioProducto from "../componentes/FormularioProducto";
-import Notificacion from "../componentes/Notificacion";
 import useProductos from "../hooks/useProductos";
 
 const Inventario = () => {
@@ -11,9 +9,6 @@ const Inventario = () => {
     loading,
     error,
     eliminarProducto,
-    crearProducto,
-    actualizarProducto,
-    categorias,
   } = useProductos();
 
   const [productos, setProductos] = useState([]);
@@ -22,12 +17,6 @@ const Inventario = () => {
   const [paginaActual, setPaginaActual] = useState(1);
   const elementosPorPagina = 12;
   const [colapsado, setColapsado] = useState(false);
-
-  // Estados para modales y formularios
-  const [modalFormularioOpen, setModalFormularioOpen] = useState(false);
-  const [productoEditando, setProductoEditando] = useState(null);
-  const [notificacion, setNotificacion] = useState(null);
-  const [loadingForm, setLoadingForm] = useState(false);
 
   // Actualizar productos cuando lleguen del backend
   useEffect(() => {
@@ -78,74 +67,11 @@ const Inventario = () => {
     if (window.confirm("¿Seguro que quieres eliminar este producto?")) {
       try {
         await eliminarProducto(id);
-        mostrarNotificacion("Producto eliminado exitosamente", "success");
+        // Los productos se actualizarán automáticamente por el hook
       } catch (error) {
-        mostrarNotificacion(
-          "Error al eliminar el producto: " + error.message,
-          "error"
-        );
+        alert("Error al eliminar el producto: " + error.message);
       }
     }
-  };
-
-  // Funciones para el modal y formulario
-  const abrirModalAgregar = () => {
-    setProductoEditando(null);
-    setModalFormularioOpen(true);
-  };
-
-  const abrirModalEditar = (producto) => {
-    // Encontrar el ID de la categoría basándose en el nombre
-    const categoriaEncontrada = categorias.find(
-      (cat) => (cat.nombre || cat) === producto.categoria
-    );
-
-    const productoParaEditar = {
-      ...producto,
-      categoria_id: categoriaEncontrada
-        ? categoriaEncontrada.id || categoriaEncontrada
-        : "",
-    };
-
-    console.log("Producto original:", producto);
-    console.log("Producto para editar:", productoParaEditar);
-    console.log("Categorías disponibles:", categorias);
-
-    setProductoEditando(productoParaEditar);
-    setModalFormularioOpen(true);
-  };
-
-  const cerrarModal = () => {
-    setModalFormularioOpen(false);
-    setProductoEditando(null);
-  };
-
-  const manejarGuardarProducto = async (datosProducto) => {
-    setLoadingForm(true);
-    try {
-      if (productoEditando) {
-        // Actualizar producto existente
-        await actualizarProducto(productoEditando.id, datosProducto);
-        mostrarNotificacion("Producto actualizado exitosamente", "success");
-      } else {
-        // Crear nuevo producto
-        await crearProducto(datosProducto);
-        mostrarNotificacion("Producto creado exitosamente", "success");
-      }
-      cerrarModal();
-    } catch (error) {
-      mostrarNotificacion(
-        "Error al guardar el producto: " + error.message,
-        "error"
-      );
-    } finally {
-      setLoadingForm(false);
-    }
-  };
-
-  const mostrarNotificacion = (mensaje, tipo) => {
-    setNotificacion({ mensaje, tipo });
-    setTimeout(() => setNotificacion(null), 4000);
   };
 
   const categoriasUnicas = [
@@ -229,9 +155,7 @@ const Inventario = () => {
               </select>
             </div>
 
-            <button className="boton-agregar" onClick={abrirModalAgregar}>
-              Agregar Producto
-            </button>
+            <button className="boton-agregar">Agregar Producto</button>
           </div>
 
           {productosFiltrados.length === 0 ? (
@@ -269,7 +193,7 @@ const Inventario = () => {
                       <td>{producto.fechaIngreso}</td>
                       <td className="botones-fila">
                         <button
-                          onClick={() => abrirModalEditar(producto)}
+                          onClick={() => alert("Editar " + producto.nombre)}
                           className="boton-editar"
                           title="Editar"
                         >
@@ -285,7 +209,7 @@ const Inventario = () => {
                       </td>
                     </tr>
                   ))}
-                </tbody>{" "}
+                </tbody>
               </table>
 
               {totalPaginas > 1 && (
@@ -305,26 +229,6 @@ const Inventario = () => {
           )}
         </div>
       </div>
-
-      {/* Modal para agregar/editar producto */}
-      <FormularioProducto
-        isOpen={modalFormularioOpen}
-        onClose={cerrarModal}
-        onSubmit={manejarGuardarProducto}
-        producto={productoEditando}
-        categorias={categorias}
-        loading={loadingForm}
-      />
-
-      {/* Notificación */}
-      {notificacion && (
-        <Notificacion
-          mensaje={notificacion.mensaje}
-          tipo={notificacion.tipo}
-          visible={true}
-          onClose={() => setNotificacion(null)}
-        />
-      )}
     </>
   );
 };
