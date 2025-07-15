@@ -1,12 +1,25 @@
 .formulario {
   max-width: 400px;
-  margin: 2rem auto;
+  width: 100%;
+  margin: 0; /* Remover el margin auto ya que el flex parent se encarga del centrado */
   padding: 2rem 1.5rem;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  box-sizing: border-box;
+  
+}
+
+.formulario_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px; /* Agregar padding para móviles */
+  background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
 }
 
 .formulario_titulo {

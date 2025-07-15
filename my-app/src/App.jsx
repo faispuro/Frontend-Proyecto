@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import ProtectedRoute from "./componentes/ProtectedRoute.jsx";
 import "./App.css";
 
 import FormularioLogin from "./componentes/FormularioLogin";

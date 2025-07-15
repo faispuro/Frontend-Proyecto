@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import MenuInteractivo from "../componentes/MenuInteractivo";
 import "../componentes/styles/Principal.css";
 
@@ -6,17 +8,71 @@ const Principal = () => {
   const [producto, setProducto] = useState([]);
   const [ventas, setVentas] = useState([]);
   const [colapsado, setColapsado] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleNavigateToInventory = () => {
+    navigate("/inventario");
+  };
 
   useEffect(() => {
     const simulacionProductos = [
-      { id: 1, nombre: "Producto 1", categoria: "Categoria 1", precio: 100, cantidad: 4 },
-      { id: 2, nombre: "Producto 2", categoria: "Categoria 2", precio: 200, cantidad: 3 },
-      { id: 3, nombre: "Producto 3", categoria: "Categoria 3", precio: 300, cantidad: 30 },
-      { id: 4, nombre: "Producto 4", categoria: "Categoria 4", precio: 400, cantidad: 0 },
-      { id: 5, nombre: "Producto 5", categoria: "Categoria 5", precio: 500, cantidad: 50 },
-      { id: 6, nombre: "Producto 6", categoria: "Categoria 1", precio: 150, cantidad: 0 },
-      { id: 7, nombre: "Producto 7", categoria: "Categoria 2", precio: 250, cantidad: 10 },
-      { id: 8, nombre: "Producto 8", categoria: "Categoria 3", precio: 350, cantidad: 5 },
+      {
+        id: 1,
+        nombre: "Producto 1",
+        categoria: "Categoria 1",
+        precio: 100,
+        cantidad: 4,
+      },
+      {
+        id: 2,
+        nombre: "Producto 2",
+        categoria: "Categoria 2",
+        precio: 200,
+        cantidad: 3,
+      },
+      {
+        id: 3,
+        nombre: "Producto 3",
+        categoria: "Categoria 3",
+        precio: 300,
+        cantidad: 30,
+      },
+      {
+        id: 4,
+        nombre: "Producto 4",
+        categoria: "Categoria 4",
+        precio: 400,
+        cantidad: 0,
+      },
+      {
+        id: 5,
+        nombre: "Producto 5",
+        categoria: "Categoria 5",
+        precio: 500,
+        cantidad: 50,
+      },
+      {
+        id: 6,
+        nombre: "Producto 6",
+        categoria: "Categoria 1",
+        precio: 150,
+        cantidad: 0,
+      },
+      {
+        id: 7,
+        nombre: "Producto 7",
+        categoria: "Categoria 2",
+        precio: 250,
+        cantidad: 10,
+      },
+      {
+        id: 8,
+        nombre: "Producto 8",
+        categoria: "Categoria 3",
+        precio: 350,
+        cantidad: 5,
+      },
     ];
     setProducto(simulacionProductos);
 
@@ -34,13 +90,13 @@ const Principal = () => {
   const ultimasVentas = [...ventas]
     .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
     .slice(0, 5)
-    .map(v => {
-      const prod = producto.find(p => p.id === v.productoId);
+    .map((v) => {
+      const prod = producto.find((p) => p.id === v.productoId);
       return {
         ...v,
         nombre: prod ? prod.nombre : "Desconocido",
         precio: prod ? prod.precio : 0,
-        categoria: prod ? prod.categoria : "General"
+        categoria: prod ? prod.categoria : "General",
       };
     });
 
@@ -50,19 +106,19 @@ const Principal = () => {
   }, {});
   const productosMasVendidos = Object.entries(productosVendidosCount)
     .map(([id, cantidad]) => {
-      const prod = producto.find(p => p.id === +id);
+      const prod = producto.find((p) => p.id === +id);
       return {
         id: +id,
         nombre: prod?.nombre || "Desconocido",
         categoria: prod?.categoria || "General",
-        cantidad
+        cantidad,
       };
     })
     .sort((a, b) => b.cantidad - a.cantidad)
     .slice(0, 5);
 
   const categoriasVendidasCount = ventas.reduce((acc, venta) => {
-    const prod = producto.find(p => p.id === venta.productoId);
+    const prod = producto.find((p) => p.id === venta.productoId);
     const cat = prod ? prod.categoria : "General";
     acc[cat] = (acc[cat] || 0) + venta.cantidad;
     return acc;
@@ -73,7 +129,7 @@ const Principal = () => {
     .slice(0, 5);
 
   const ultimosSinStock = producto
-    .filter(p => p.cantidad === 0)
+    .filter((p) => p.cantidad === 0)
     .sort((a, b) => b.id - a.id)
     .slice(0, 5);
 
@@ -81,22 +137,32 @@ const Principal = () => {
     <div className="principal-contenedor">
       <MenuInteractivo colapsado={colapsado} setColapsado={setColapsado} />
 
-      <div className={`main-content ${colapsado ? "colapsado" : "no-colapsado"}`}>
-
+      <div
+        className={`main-content ${colapsado ? "colapsado" : "no-colapsado"}`}
+      >
         {/* Tarjeta Bienvenida - ancho completo */}
         <section className="tarjeta bienvenida">
-          <h1 className="principal_titulo">Bienvenido</h1>
+          <div>
+            <h1 className="principal_titulo">
+              Bienvenido{user?.nombre ? `, ${user.nombre}` : ""}
+            </h1>
+            <h2
+              className="subtitulo clickeable"
+              onClick={handleNavigateToInventory}
+              title="Ir a Inventario"
+            >
+              Control total sobre tu inventario, siempre a un click de
+              distancia.
+            </h2>
+          </div>
           <p className="parrafo">
-            Administra tu inventario, carga nuevos productos y mantén todo bajo control de forma sencilla y eficiente.
+            Administra tu inventario, carga nuevos productos y mantén todo bajo
+            control de forma sencilla y eficiente.
           </p>
-          <h2 className="subtitulo">
-            Control total sobre tu inventario, siempre a un click de distancia.
-          </h2>
         </section>
 
         {/* Contenedor para las secciones */}
         <div className="restantes-secciones">
-
           {/* Fila 1: 1/4 + 3/4 */}
           <div className="grid-dos-columnas-1-3">
             <section className="tarjeta chica">
@@ -112,7 +178,7 @@ const Principal = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {ultimosSinStock.map(p => (
+                    {ultimosSinStock.map((p) => (
                       <tr key={p.id}>
                         <td>{p.id}</td>
                         <td>{p.nombre}</td>
@@ -139,7 +205,7 @@ const Principal = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {ultimasVentas.map(v => (
+                    {ultimasVentas.map((v) => (
                       <tr key={v.id}>
                         <td>{v.id}</td>
                         <td>{v.nombre}</td>
@@ -169,7 +235,7 @@ const Principal = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {productosMasVendidos.map(p => (
+                    {productosMasVendidos.map((p) => (
                       <tr key={p.id}>
                         <td>{p.id}</td>
                         <td>{p.nombre}</td>
@@ -193,7 +259,7 @@ const Principal = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {categoriasMasVendidas.map(c => (
+                    {categoriasMasVendidas.map((c) => (
                       <tr key={c.categoria}>
                         <td>{c.categoria}</td>
                         <td>{c.cantidad}</td>
@@ -204,7 +270,6 @@ const Principal = () => {
               </div>
             </section>
           </div>
-
         </div>
       </div>
     </div>

@@ -8,9 +8,28 @@
   max-height: 0;
   overflow: hidden;
 }
+
+.mi-cuenta-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.mi-cuenta-main.colapsado {
+  margin-left: 70px;
+}
+
+.mi-cuenta-main.no-colapsado {
+  margin-left: 220px;
+}
+
 .micuenta-container {
   max-width: 500px;
-  margin: 40px auto;
+  width: 100%;
+  margin: 0; /* Remover el margin auto ya que el flex parent se encarga del centrado */
   padding: 25px 30px;
   background: #fff;
   border-radius: 12px;
@@ -158,10 +177,36 @@
   border-color: #a71d2a;
   box-shadow: 0 0 6px #a71d2a;
 }
+/* @media (max-width: 768px) {
+  .mi-cuenta-main.colapsado,
+  .mi-cuenta-main.no-colapsado {
+    margin-left: 0;
+    padding: 10px;
+  }
+} */
+
+@media (max-width: 630px) {
+  .mi-cuenta-main {
+    margin-left: 70px !important; /* Siempre con margen del sidebar colapsado en móvil */
+    transition: margin-left 0.3s ease;
+  }
+
+  .mi-cuenta-main.colapsado,
+  .mi-cuenta-main.no-colapsado {
+    margin-left: 70px !important;
+  }
+}
+
 @media (max-width: 600px) {
   .micuenta-container {
     padding: 20px;
-    margin: 20px 10px;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .mi-cuenta-main {
+    min-height: calc(100vh - 40px);
+    padding: 20px 10px;
   }
 }
 

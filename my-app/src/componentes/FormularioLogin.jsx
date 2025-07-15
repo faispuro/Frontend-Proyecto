@@ -47,60 +47,66 @@ const FormularioLogin = () => {
   };
 
   return (
-    <div className="formulario">
-      <h1 className="formulario_titulo">Iniciar sesión</h1>
+    <main className="formulario_main">
+      <div className="formulario">
+        <h1 className="formulario_titulo">Iniciar sesión</h1>
 
-      {(error || submitError) && (
-        <div className="formulario_error_general">{error || submitError}</div>
-      )}
-
-      <form className="formulario_form" onSubmit={handleSubmit(onSubmit)}>
-        <label className="formulario_label">Email</label>
-        <input
-          className="formulario_input"
-          type="email"
-          {...register("email", {
-            required: "El email es obligatorio",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Email inválido",
-            },
-          })}
-        />
-        {errors.email && (
-          <p className="formulario_error">{errors.email.message}</p>
+        {(error || submitError) && (
+          <div className="formulario_error_general">{error || submitError}</div>
         )}
 
-        <label className="formulario_label">Contraseña</label>
-        <input
-          className="formulario_input"
-          type="password"
-          {...register("password", {
-            required: "La contraseña es obligatoria",
-            minLength: {
-              value: 6,
-              message: "La contraseña debe tener al menos 6 caracteres",
-            },
-          })}
-        />
-        {errors.password && (
-          <p className="formulario_error">{errors.password.message}</p>
-        )}
+        <form className="formulario_form" onSubmit={handleSubmit(onSubmit)}>
+          <label className="formulario_label">Email</label>
+          <input
+            className="formulario_input"
+            type="email"
+            {...register("email", {
+              required: "El email es obligatorio",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Email inválido",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="formulario_error">{errors.email.message}</p>
+          )}
 
-        <button className="formulario_button" type="submit" disabled={loading}>
-          {loading ? "Iniciando sesión..." : "Ingresar"}
-        </button>
-      </form>
+          <label className="formulario_label">Contraseña</label>
+          <input
+            className="formulario_input"
+            type="password"
+            {...register("password", {
+              required: "La contraseña es obligatoria",
+              minLength: {
+                value: 6,
+                message: "La contraseña debe tener al menos 6 caracteres",
+              },
+            })}
+          />
+          {errors.password && (
+            <p className="formulario_error">{errors.password.message}</p>
+          )}
 
-      <div className="formulario_footer">
-        <p>
-          ¿No tenés cuenta?{" "}
-          <button className="formulario_link" onClick={() => navigate("/")}>
-            Registrarme
+          <button
+            className="formulario_button"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Iniciando sesión..." : "Ingresar"}
           </button>
-        </p>
+        </form>
+
+        <div className="formulario_footer">
+          <p>
+            ¿No tenés cuenta?{" "}
+            <button className="formulario_link" onClick={() => navigate("/")}>
+              Registrarme
+            </button>
+          </p>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

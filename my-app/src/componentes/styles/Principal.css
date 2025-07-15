@@ -1,7 +1,7 @@
 .principal-contenedor {
   display: flex;
   height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f7fa;
 }
 h2 {
@@ -34,12 +34,12 @@ h2 {
 }
 
 .principal_titulo {
-  display: block; 
+  display: block;
   font-size: 40px;
   font-weight: 700;
   color: #2c3e50;
   letter-spacing: -0.5px;
-  margin-bottom: 10px;
+  margin: 0px;
   text-align: left;
   line-height: 1.2;
 }
@@ -53,7 +53,7 @@ h2 {
 }
 
 .subtitulo {
-  margin-top: 25px;
+  margin: 0px;
   padding-bottom: 6px;
   font-weight: 600;
   font-size: 20px;
@@ -68,12 +68,22 @@ h2 {
   border-bottom-color: #3498db;
   color: #217dbb;
 }
-.titulo-tarjeta{
-    font-size: 26px;
-    font-weight: 600;
-    color: #2c3e50;
-    flex-grow: 1;
-    
+
+/* Estilos adicionales para elementos clickeables */
+.clickeable {
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.clickeable:active {
+  transform: translateY(1px);
+}
+
+.titulo-tarjeta {
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e50;
+  flex-grow: 1;
 }
 
 .restantes-secciones {
