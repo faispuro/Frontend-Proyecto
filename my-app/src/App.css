@@ -1,11 +1,11 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
-
 }
-.nav_nav{
-  display:none;
+.nav_nav {
+  display: none;
 }
 .formulario {
   max-width: 400px;
@@ -14,7 +14,7 @@ html, body {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
 }
 
@@ -102,6 +102,61 @@ html, body {
 
 .formulario_link:hover {
   color: #1c5980;
+}
+
+/* Estilos para navegación con autenticación */
+.user-info {
+  color: #2c3e50;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}
+
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+
+.nav_nav {
+  display: block !important;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu_ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu_li {
+  margin: 0;
+}
+
+.menu_li a {
+  text-decoration: none;
+  color: #2c3e50;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu_li a:hover {
+  background-color: #ecf0f1;
 }
 
 @media (max-width: 600px) {
